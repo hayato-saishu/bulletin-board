@@ -1,0 +1,14 @@
+<% if logged_in? %>
+  <%= render 'groups/groups', groups: @groups %>
+<% else %>
+
+<div class="text-center my-5">
+  <h2>グループの内容を見るには会員登録をしよう!</h2>
+</div>
+<div class="my-5">
+  <%= link_to '会員登録', signup_path, class: 'btn btn-dark btn-block' %>
+</div>
+<div class="my-5">
+  <%= link_to 'ログイン', login_path, class: 'btn btn-light btn-block' %>
+</div>
+<% end %>

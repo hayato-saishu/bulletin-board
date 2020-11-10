@@ -1,0 +1,21 @@
+<div class="text-center bg-light text-info">
+  <h1>グループ一覧</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-5 mt-3">
+    <%= link_to '新規グループ作成', new_group_path, class: 'btn btn-dark btn-block' %>
+  </div>
+  <div class="col-sm-5 offset-sm-2 mt-3">
+    <%= form_with url: groups_path, method: :get, local: true do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit '検索' %>
+    <% end %>
+  </div>
+</div>
+
+<% groups.each do |group| %>
+  <div class="border border-rounded bg-light mt-4">
+    <h2><%= link_to group.name, group_path(group.id) %> : <%= group.comment %></h2>
+  </div>
+<% end %>
