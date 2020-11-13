@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order(id: :desc).page(params[:page])
+    @groups = @user.groups.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -20,6 +22,12 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def groupsshow
+    @user = User.find(params[:id])
+    @groupsshow = @user.groups.order(id: :desc).page(params[:page])
+  end
+
   
   private
   

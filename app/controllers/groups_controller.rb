@@ -1,16 +1,24 @@
 class GroupsController < ApplicationController
+  before_action :require_user_logged_in, only: [:show, :new, :create, :destroy]
+  before_action :correct_user, only: [:destroy]
+  
   def index
     p params
     @name = params[:name]
     puts @name
     if @name == nil
-      @groups = Group.order(id: :desc).page(params[:page]).per(25)
+      @groups = Group.order(id: :desc).page(params[:page]).per(10)
     else
-      @groups = Group.where(['name LIKE ?', "%#{@name}%"]).order(id: :desc).page(params[:page]).per(25)
+      @groups = Group.where(['name LIKE ?', "%#{@name}%"]).order(id: :desc).page(params[:page]).per(10)
     end
   end
 
   def show
+    if logged_in?
+      @group = Group.find(params[:id])
+      @post = @group.posts.build
+      @posts = @group.posts.order(id: :desc).page(params[:page]).per(10)
+    end
   end
 
   def new
@@ -30,7 +38,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
+    #@group = Group.find(params[:id])
     @group.destroy
     flash[:success] = 'グループを削除しました'
     redirect_to root_url
@@ -40,5 +48,12 @@ class GroupsController < ApplicationController
   
   def group_params 
     params.require(:group).permit(:name, :comment)
+  end
+  
+  def correct_user
+    @group = current_user.groups.find_by(id: params[:id])
+    unless @group
+      redirect_to root_url
+    end
   end
 end

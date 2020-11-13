@@ -1,0 +1,11 @@
+<ul class="list-unstyled">
+  <% posts.each do |post| %>
+    <div class="border border-rounded bg-light mt-3">
+      <h3>
+        <%= link_to post.group.name, group_path(post.group) %> : <%= post.content %>
+        <%= link_to "削除", post, method: :delete, data: { confirm: "削除しますか?" }, class: 'btn btn-danger btn-sm' %>
+      </h3>
+    </div>
+  <% end %>
+  <%= paginate posts %>
+</ul>

@@ -16,6 +16,12 @@
 
 <% groups.each do |group| %>
   <div class="border border-rounded bg-light mt-4">
-    <h2><%= link_to group.name, group_path(group.id) %> : <%= group.comment %></h2>
+    <h2>
+      <%= link_to group.name, group_path(group.id) %> : <%= group.comment %>
+      <% if current_user == group.user %>
+        <%= link_to "削除", group, method: :delete, data: { confirm: "削除しますか?" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+      
+    </h2>
   </div>
 <% end %>
