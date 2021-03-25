@@ -18,9 +18,9 @@
 
 # 開発環境
 
-Rails 5.2.4.4
-ruby 2.5.3
-Server version: 5.5.62 MySQL Community Server (GPL)
+* Rails 5.2.4.4
+* ruby 2.5.3
+* DB:MySQL 5.5.62
 
 # Installation
 
