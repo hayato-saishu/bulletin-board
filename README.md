@@ -1,5 +1,6 @@
 # ゲーム情報共有掲示板
 
+
 # トップページ
 
 ![スクリーンショット (3)](https://user-images.githubusercontent.com/71966900/112476717-8a128a80-8db5-11eb-8e6c-835a5fdcb12a.png)
@@ -9,16 +10,17 @@
 ![スクリーンショット (4)](https://user-images.githubusercontent.com/71966900/112476544-5afc1900-8db5-11eb-94bd-060467d6d72b.png)
 
 
-# 
+# 概要
 
-"hoge"のセールスポイントや差別化などを説明する
+誰でも自由にスレッドを建てることができて、スレッド内で様々な情報を共有することができる。
+また、コメントを残しているユーザーのプロフィールページに飛ぶことができる。
+そこで、ゲーム内のIDなどを書き込んでおけば、フレンド登録することもできる。
 
-# Requirement
+# 開発環境
 
-"hoge"を動かすのに必要なライブラリなどを列挙する
-
-* huga 3.5.2
-* hogehuga 1.0.2
+Rails 5.2.4.4
+ruby 2.5.3
+Server version: 5.5.62 MySQL Community Server (GPL)
 
 # Installation
 
